@@ -1,11 +1,9 @@
-#include<iostream>
+#include<stdio.h>
 #include<unistd.h>
 #include<sys/types.h>
 #include<sys/wait.h>
 #include<signal.h>
 #include<stdlib.h>
-
-using namespace std;
 
 int wait_flag;
 
@@ -13,7 +11,7 @@ void stop(){wait_flag=0;}
  
 int main()
 {
-	int pid1,pid2;
+	pid_t pid1,pid2;
 	signal(2,stop);
 	pause();
 	while((pid1 = fork())== -1);
