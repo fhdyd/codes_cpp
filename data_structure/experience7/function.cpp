@@ -110,6 +110,8 @@ int Init(HuffmanTree &HT,F_W *w,int n) //初始化赫夫曼树
    }
   return 1; 
 }
+
+
 int Decoding(HuffmanTree HT,HuffmanCode HC,int n) //译码
 {  int m=2*n-1,i=0,j;
     while(S1[i]!='\0')

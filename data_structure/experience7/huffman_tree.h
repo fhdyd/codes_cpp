@@ -11,7 +11,7 @@ typedef struct //字符频度表
 	char c; //对应字符 
 }F_W;
 F_W w[100];//字符频度存放数组
-
+F_W W2[8];
 
 typedef struct
 { int weight; //权值 
