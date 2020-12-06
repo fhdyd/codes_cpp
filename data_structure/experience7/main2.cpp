@@ -18,13 +18,17 @@ int main(){
         cout << "字符为" << " " << W2[i].c << " " << "编码为" << " " << HC[i + 1] << endl; 
     }
     string S = "ACABHGF";
-    cout<<"编码为："<<endl;
+    string s = "";
+    cout << "编码为：" << endl;
     for(int i = 0; i < S.length(); i++)
         for(int j = 0; j <= 7; j++){
             if(S[i] == W2[j].c){
-                cout << HC[j+1];
+                s = s + HC[j + 1];
                 break;
             }
         }
+    cout << s << endl;
+    cout << "译码为：" << endl;
+    decoding(s, HC, 8);
     cout << endl;
 }

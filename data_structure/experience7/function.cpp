@@ -68,3 +68,21 @@ int Init(HuffmanTree &HT,F_W *w,int n) //初始化赫夫曼树
 	return 1;
  } 
 
+
+void decoding(string s, HuffmanCode HC, int n){
+    char *cur = &s[0];
+    char test[100] = "";
+    int t = 0;
+    while(t < s.length()){
+        test[strlen(test)] = *cur;
+        for(int i = 1; i <= n; i++){
+            if(!strcmp(HC[i], test)){
+                cout << W2[i - 1].c;
+                for(int j=0;j<100;j++)
+                  test[j]=0;
+            }
+        }
+        cur++;
+        t++;
+    }
+}
