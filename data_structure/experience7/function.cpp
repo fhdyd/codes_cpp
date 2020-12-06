@@ -1,37 +1,6 @@
 #include"huffman_tree.h"
 
 
-int char_count(string s,char a)  //计算单个字符频度 
-{ int i,count=0;
-  for(i=0;i<s.length();i++)
-  if(s[i]==a) //如果字符a出现一次 count+1 
-   count++;
-  return count;	
-}
-
-
-void create_w(string s) //创建字符频度表w 
-{ int i,j,flag; 
-  w[0].weight=char_count(s,s[0]);//先统计第一个字符频度并入表 
-  w[0].c=s[0];
-  int t=1; //t表示数组的循环变量 
-  for(i=1;i<s.length();i++)
-    { flag=1; //表示这个字符之前没有出现过 
-	  for(j=0;j<i;j++)  
-	  {if(s[j]==s[i])//如果这个字符之前已经出现过
-        { flag=0;
-          break; 
-		}
-	  }
-	if(flag==1) //如果之前没出现过，统计该字符频度并放进数组w 
-	 { w[t].weight=char_count(s,s[i]);
-	   w[t].c=s[i];
-	   t++;
-	 }
-	}
-}
-
-
 void Select(HuffmanTree HT,int j,int &s1,int &s2) //在所有的字符节点中挑选两个权值最小的赋值给s1,s2 
 { int i,k,min1=0,min2=0;
   for(i=1;i<=j;i++)
@@ -98,34 +67,3 @@ int Init(HuffmanTree &HT,F_W *w,int n) //初始化赫夫曼树
 	return 1;
  } 
 
-
- int Encoding(string S,int n,HuffmanCode HC) //编码字符串 
-{ int i,j;
-  for(i=0;i<S.length();i++)
-   {   for(j=0;j<n;j++) //在频度表中找对应的字符 
-          if(w[j].c==S[i])
-           { 
-		     strcat(S1,HC[j+1]);}  //将该字符的赫夫曼编码存进S数组 
-            
-   }
-  return 1; 
-}
-
-
-int Decoding(HuffmanTree HT,HuffmanCode HC,int n) //译码
-{  int m=2*n-1,i=0,j;
-    while(S1[i]!='\0')
-    { if(S1[i]=='0')
-       m=HT[m].lchild;
-      else
-	   m=HT[m].rchild;
-	   if(HT[m].lchild==0) //找到叶子节点(赫夫曼树必须有两个节点，所以只需判断一个左或者右孩子)	
-    	{  for(j=0;j<n;j++)
-    		if(w[j].weight==HT[m].weight&&HT[m].c==w[j].c) //找到权值对应的字符 
-    		 cout<<w[j].c; //输出 
-    		 m=2*n-1; //重新从根节点出发 
-		 } 
-	  i++;
-    }
-    return 1;
-}
