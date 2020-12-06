@@ -1,18 +1,25 @@
-#include<iostream>
 #include"function.cpp"
 
-using namespace std;
 
-int main()
-{
-    char a[]={'a','b','c','d','e'};
-    unsigned int b[]={1,2,3,4,5};
+int main(){
+    string s;
+    int n=0,i;
+    cin>>s;
+    create_w(s);
     HuffmanTree HT;
     HuffmanCode HC;
-    HuffmanCoding(HT,HC,b,5);
-    for(int j=1;j<=5;j++)
-    {
-        cout<<a[j-1]<<" "<<HC[j]<<endl;
-    }
-    return 0;
-}
+    for(i=0;w[i].weight!=0;i++)
+        n++;
+    Init(HT,w,n);
+    CreateTable(HC,HT,n);
+    cout<<"编码表为："<<endl; 
+    for(i=1;i<=n;i++)
+        cout<<w[i-1].c<<":"<<HC[i]<<" ";
+    cout<<endl;
+    cout<<"编码为："<<endl;
+    Encoding(s,n,HC); 
+    cout<<S1<<endl; 
+    cout<<"译码为："<<endl;
+    Decoding(HT,HC,n);
+    return 0;	
+ } 
