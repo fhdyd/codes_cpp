@@ -22,7 +22,7 @@ int main()
     pid_t pid1,pid2;
     signal(3,stop);
 
-    while((pid1=fork())==-1);
+    while((pid1=fork())==-1);//创建进程直到创建成功
     if(pid1>0)
     {
         while((pid2=fork())==-1);
