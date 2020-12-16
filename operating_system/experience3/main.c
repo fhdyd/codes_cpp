@@ -26,7 +26,7 @@ int main()
     if(pid1>0)
     {
         while((pid2=fork())==-1);
-        if(pid2>0)
+        if(pid2>0)//进程2中
         {
             sleep(5);
             kill(pid1,16);
@@ -36,7 +36,7 @@ int main()
             printf("\nParent process is killed\n");
             exit(0);
         }
-        else
+        else//进程1中
         {
             signal(17,stop2);
             while(flag_wait);
@@ -44,7 +44,7 @@ int main()
             exit(0);
         }
     }
-    else
+    else//父进程中
     {
         signal(16,stop2);
         while(flag_wait);
