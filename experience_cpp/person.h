@@ -34,37 +34,44 @@ public:
     string get_num(){return num;}
 };
  
+
 int Person::person_sum = 0;
 int Person::man_sum = 0;
 int Person::woman_sum = 0;
  
+
 int Person::get_person_sum()
 {
     return person_sum;
 }
- 
+
+
 int Person::get_man_sum()
 {
     return man_sum;
 }
- 
+
+
 int Person::get_woman_sum()
 {
     return woman_sum;
 }
- 
+
+
 Person::Person(string a, bool b, int c, string d): name(a), sex(b), age(c), num(d)
 {
     person_sum++;
     if(b) man_sum++;
     else woman_sum++;
 }
- 
+
+
 Person::~Person()
 {
     person_sum--;
     if(sex) man_sum--;
     else woman_sum--;
 }
+
  
 #endif
