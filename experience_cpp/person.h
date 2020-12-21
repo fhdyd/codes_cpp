@@ -12,7 +12,7 @@ class Person
 {
 protected:
     string name;
-    bool sex;
+    bool sex;//0女1男
     int age;
     string id;
     static int person_sum;//静态成员变量，类共有
@@ -25,7 +25,6 @@ public:
     static int get_man_sum();
     static int get_woman_sum();
     virtual void show(){}
-    virtual void show_row(){}
     virtual bool change(){}
  
     string get_name(){return name;}

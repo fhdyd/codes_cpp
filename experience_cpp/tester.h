@@ -4,16 +4,16 @@
 #include"person.h"
  
 
-class TESTER: public Person
+class Tester: public Person
 {
 private:
     string laboratory;
     string title;
     static int tester_sum;
 public:
-    TESTER(string a = "nobody", bool b = 1, int c = 19, string d = "1",
+    Tester(string a = "nobody", bool b = 1, int c = 19, string d = "1",
            string e = "tt", string f = "学生");
-    ~TESTER();
+    ~Tester();
  
     static int get_tester_sum();
     virtual void show();
@@ -24,25 +24,25 @@ public:
     string get_title(){return title;}
 };
  
-int TESTER::tester_sum = 0;
+int Tester::tester_sum = 0;
  
-int TESTER::get_tester_sum()
+int Tester::get_tester_sum()
 {
     return tester_sum;
 }
  
-TESTER::TESTER(string a, bool b, int c, string d, string e, string f):
+Tester::Tester(string a, bool b, int c, string d, string e, string f):
 Person(a,b,c,d), laboratory(e), title(f)
 {
     tester_sum++;
 }
  
-TESTER::~TESTER()
+Tester::~Tester()
 {
     tester_sum--;
 }
  
-void TESTER::show()
+void Tester::show()
 {
     cout << "实验员：\n";
     cout << "姓名:\t\t" << name << endl;
@@ -55,30 +55,18 @@ void TESTER::show()
     cout << "职务:\t\t" << title << endl;
 }
  
-void TESTER::show_row()
-{
-    cout << left << setw(8) << name;
-    if(sex) cout << left << setw(8) << "男";
-    else cout << left << setw(8) << "女";
-    cout << left << setw(8) << age;
-    cout << left << setw(16) << id;
-    cout << left << setw(16) << laboratory;
-    cout << left << setw(16) << title;
-    cout << endl;
-}
- 
-bool TESTER::change()
+bool Tester::change()
 {
     cout << "姓名:\t\t" ;
     string new_name;
     cin >> new_name;
-    for(unsigned int i = 0; i < new_name.length(); i++)
+    for(int i = 0; i < new_name.length(); i++)
     {
         if(new_name[i] >= '0' && new_name[i] <= '9')
         {
             cout << "输入非法，输入任意键返回\n";
             return 1;
-        }
+        }//名字含数字，错误
     }
     name = new_name;
  
