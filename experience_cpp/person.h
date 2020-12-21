@@ -14,7 +14,7 @@ protected:
     string name;
     bool sex;//0女1男
     int age;
-    string id;
+    string num;
     static int person_sum;//静态成员变量，类共有
     static int man_sum;
     static int woman_sum;
@@ -31,7 +31,7 @@ public:
     string get_name(){return name;}
     bool get_sex(){return sex;}
     int get_age(){return age;}
-    string get_id(){return id;}
+    string get_num(){return num;}
 };
  
 int Person::person_sum = 0;
@@ -53,7 +53,7 @@ int Person::get_woman_sum()
     return woman_sum;
 }
  
-Person::Person(string a, bool b, int c, string d): name(a), sex(b), age(c), id(d)
+Person::Person(string a, bool b, int c, string d): name(a), sex(b), age(c), num(d)
 {
     person_sum++;
     if(b) man_sum++;

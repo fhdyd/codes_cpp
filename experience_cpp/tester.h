@@ -54,7 +54,7 @@ void Tester::show()
     if(sex) cout << "男\n";
     else cout << "女\n";
     cout << "年龄:\t\t" << age << endl;
-    cout << "ID:\t\t" << id << endl;
+    cout << "编号:\t\t" << num << endl;
     cout << "所属实验室:\t" << laboratory << endl;
     cout << "职务:\t\t" << title << endl;
 }
@@ -66,7 +66,7 @@ void Tester::show_row()
     if(sex) cout << left << setw(8) << "男";
     else cout << left << setw(8) << "女";
     cout << left << setw(8) << age;
-    cout << left << setw(16) << id;
+    cout << left << setw(16) << num;
     cout << left << setw(16) << laboratory;
     cout << left << setw(16) << title;
     cout << endl;
@@ -106,5 +106,5 @@ bool Tester::change()
     return 0;
 }
  
- 
+
 #endif 
