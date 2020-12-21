@@ -24,7 +24,8 @@ public:
     static int get_person_sum();
     static int get_man_sum();
     static int get_woman_sum();
-    virtual void show(){}
+    virtual void show(){}//虚函数
+    virtual void show_row(){}
     virtual bool change(){}
  
     string get_name(){return name;}

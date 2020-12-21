@@ -24,6 +24,7 @@ public:
     string get_title(){return title;}
 };
  
+
 int Tester::tester_sum = 0;
  
 int Tester::get_tester_sum()
@@ -31,17 +32,20 @@ int Tester::get_tester_sum()
     return tester_sum;
 }
  
+
 Tester::Tester(string a, bool b, int c, string d, string e, string f):
 Person(a,b,c,d), laboratory(e), title(f)
 {
     tester_sum++;
 }
  
+
 Tester::~Tester()
 {
     tester_sum--;
 }
  
+
 void Tester::show()
 {
     cout << "实验员：\n";
@@ -55,6 +59,19 @@ void Tester::show()
     cout << "职务:\t\t" << title << endl;
 }
  
+
+void Tester::show_row()
+{
+    cout << left << setw(8) << name;
+    if(sex) cout << left << setw(8) << "男";
+    else cout << left << setw(8) << "女";
+    cout << left << setw(8) << age;
+    cout << left << setw(16) << id;
+    cout << left << setw(16) << laboratory;
+    cout << left << setw(16) << title;
+    cout << endl;
+}
+
 bool Tester::change()
 {
     cout << "姓名:\t\t" ;
@@ -88,5 +105,6 @@ bool Tester::change()
     cin >> title;
     return 0;
 }
+ 
  
 #endif 
