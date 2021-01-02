@@ -1,103 +1,104 @@
 #ifndef ADMINISTRATOR_H_INCLUDED
 #define ADMINISTRATOR_H_INCLUDED
  
-#include"common.h"
+#include"people.h"
  
-class ADMINISTRATOR: virtual public COMMON
+
+class Administrator: virtual public People
 {
 protected:
-    std::string politics;
-    std::string position;
+    string position;
     static int administrator_sum;
 public:
-    ADMINISTRATOR(std::string a = "huhu", bool b = 1, int c = 39, std::string d = "176",
-                  std::string e = "群众", std:: string f = "社会主义新青年");
-    ~ADMINISTRATOR();
+    Administrator(string a = "000", bool b = 1, int c = 0, string d = "000",
+                string f = "000");
+    ~Administrator();
  
-    static int get_administrator_sum();
+    static int getAdministratorSum();
     virtual void show();
-    virtual void show_row();
+    virtual void showRow();
     virtual bool change();
- 
-    std::string get_politics(){return politics;}
-    std::string get_position(){return position;}
+    string getPosition(){return position;}
 };
  
-int ADMINISTRATOR::administrator_sum = 0;
+
+int Administrator::administrator_sum = 0;
  
-int ADMINISTRATOR::get_administrator_sum()
+
+int Administrator::getAdministratorSum()
 {
     return administrator_sum;
 }
  
-ADMINISTRATOR::ADMINISTRATOR(std::string a, bool b, int c, std::string d, std::string e, std::string f):
-COMMON(a,b,c,d), politics(e), position(f)
-{
+
+Administrator::Administrator(string a, bool b, int c, string d, string e):
+People(a,b,c,d), position(e){
     administrator_sum++;
 }
  
-ADMINISTRATOR::~ADMINISTRATOR()
+
+Administrator::~Administrator()
 {
     administrator_sum--;
 }
- 
-void ADMINISTRATOR::show()
+
+
+void Administrator::show()
 {
-    std::cout << "行政人员：\n";
-    std::cout << "姓名:\t\t" << name << std::endl;
-    std::cout << "姓别:\t\t";
-    if(sex) std::cout << "男\n";
-    else std::cout << "女\n";
-    std::cout << "年龄:\t\t" << age << std::endl;
-    std::cout << "ID:\t\t" << id << std::endl;
-    std::cout << "政治面貌:\t" << politics << std::endl;
-    std::cout << "职称:\t\t" << position << std::endl;
+    cout << "行政人员：\n";
+    cout << "姓名:\t\t" << name << endl;
+    cout << "姓别:\t\t";
+    if(sex) cout << "男\n";
+    else cout << "女\n";
+    cout << "年龄:\t\t" << age << endl;
+    cout << "编号:\t\t" << id << endl;
+    cout << "职务:\t\t" << position << endl;
 }
- 
-void ADMINISTRATOR::show_row()
+
+
+void Administrator::showRow()
 {
-    std::cout << std::left << std::setw(8) << name;
-    if(sex) std::cout << std::left << std::setw(8) << "男";
-    else std::cout << std::left << std::setw(8) << "女";
-    std::cout << std::left << std::setw(8) << age;
-    std::cout << std::left << std::setw(16) << id;
-    std::cout << std::left << std::setw(16) << politics;
-    std::cout << std::left << std::setw(16) << position;
-    std::cout << std::endl;
+    cout << left << setw(10) << name;
+    if(sex) cout << left << setw(8) << "男";
+    else cout << left << setw(8) << "女";
+    cout << left << setw(8) << age;
+    cout << left << setw(16) << id;
+    cout << left << setw(16) << position;
+    cout << endl;
 }
- 
-bool ADMINISTRATOR::change()
+
+
+bool Administrator::change()
 {
-    std::cout << "姓名:\t\t" ;
-    std::string new_name;
-    std::cin >> new_name;
+    cout << "姓名:\t\t" ;
+    string new_name;
+    cin >> new_name;
     for(unsigned int i = 0; i < new_name.length(); i++)
     {
         if(new_name[i] >= '0' && new_name[i] <= '9')
         {
-            std::cout << "输入非法，输入任意键返回\n";
+            cout << "输入非法，输入任意键返回\n";
             return 1;
         }
     }
     name = new_name;
  
-    std::cout << "姓别:\t\t";
-    std::string a;
-    std::cin >> a;
+    cout << "姓别:\t\t";
+    string a;
+    cin >> a;
     if(sex) man_sum--;
     else woman_sum--;
     if(a == "男") sex = 1, man_sum++;
     else sex = 0, woman_sum++;
  
-    std::cout << "年龄:\t\t";
-    std::cin >> age;
+    cout << "年龄:\t\t";
+    cin >> age;
  
-    std::cout << "政治面貌:\t";
-    std::cin >> politics;
  
-    std::cout << "职称:\t\t";
-    std::cin >> position;
+    cout << "职务:\t\t";
+    cin >> position;
     return 0;
 }
  
+
 #endif // ADMINISTRATOR_H_INCLUDED
