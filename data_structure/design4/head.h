@@ -1,3 +1,4 @@
+//head.h
 #include<iostream>
 using namespace std;
 #define MAXSUM 100
@@ -21,8 +22,13 @@ int create(ArcCell *A){
     return arcsum;
 }
 
+//如果a<b则返回1否则返回0
+bool compare(int a, int b){
+    return a<b;
+}
+
 //从0开始
-void HeapAdjust(ArcCell *a,int i,int len, int model)//model模式选择 0从小到大1从大到小
+void HeapAdjust(ArcCell *a,int i,int len, int model, bool (*compare)(int a, int b))//model模式选择 0从小到大1从大到小
 {
     while( 2*i+1 < len )// 有左儿子
     {
@@ -30,20 +36,20 @@ void HeapAdjust(ArcCell *a,int i,int len, int model)//model模式选择 0从小�
         if(2*i+2<len)//有右儿子
         {
             if(model){
-                if(a[2*i+1].weight<a[2*i+2].weight)
+                if(compare(a[2*i+1].weight,a[2*i+2].weight))
                 {
                     maxindex=2*i+2;
                 }
             }
             else
             {
-                if(a[2*i+1].weight>a[2*i+2].weight)
+                if(!compare(a[2*i+1].weight,a[2*i+2].weight))
                 maxindex=2*i+2;
             }
             
         }
         if(model){
-            if(a[i].weight<a[maxindex].weight)
+            if(compare(a[i].weight, a[maxindex].weight))
             {
                 ArcCell temp;
                 temp = a[i];
@@ -59,7 +65,7 @@ void HeapAdjust(ArcCell *a,int i,int len, int model)//model模式选择 0从小�
             }
             }
         else{
-            if(a[i].weight>a[maxindex].weight)
+            if(!compare(a[i].weight, a[maxindex].weight))
             {
                 ArcCell temp;
                 temp = a[i];
@@ -90,9 +96,8 @@ void HeapSort(ArcCell *a,int len)
     for(i=len/2-1;i>=0;i--)//从后起第一个有儿子的节点开始
     {
         //调用构建大顶堆函数
-        HeapAdjust(a, i, len, model);
+        HeapAdjust(a, i, len, model, compare);
     }
-    //只需做n-1趟排序
     int record =0;
     for(i=len-1;i>0&&record < num;i--,record++)
     {
@@ -102,7 +107,7 @@ void HeapSort(ArcCell *a,int len)
         a[0] = a[i];
         a[i] = temp;
         //将a[0..i]重新调整为大顶堆
-        HeapAdjust(a, 0, i, model);
+        HeapAdjust(a, 0, i, model, compare);
     }
     for(i = len - 1; i > len - 1 - num; i--){
         cout << a[i].no << " " << a[i].from << "->" << a[i].to << " " << a[i].weight << endl;

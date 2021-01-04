@@ -1,16 +1,16 @@
+//head.h
 #define MAXSUM 100
 #include <iostream>
 using namespace std;
-
+#define elemtype int
 
 struct EdgeType{                                    //关于图中边的信息的结构体
 	int from, to;
 	int Weight;
 };
 
-
 struct EdgeGraph{                                    //关于整个图中顶点、边的所有信息，需要将前面边的结构体内容导入此结构体
-	int Vertex[MAXSUM];                            //顶点数组，假设最大顶点数和边数不超过100
+	elemtype Vertex[MAXSUM];                            //顶点数组，假设最大顶点数和边数不超过100
 	EdgeType Edge[MAXSUM];                         //边信息的结构体数组
 	int VertexNum, EdgeNum;                     //顶点数、边数
 };
