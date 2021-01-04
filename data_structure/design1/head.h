@@ -17,6 +17,14 @@ int priority(datatype op)
     return -1;
 }
 
+
+void printStack(seqstack s){
+    cout << "栈内情况为：" ;
+    while(s.top){
+        cout << pop(&s);
+    }
+    cout << endl;
+}
 //中转后
 void transfer()
 {
@@ -59,6 +67,7 @@ void transfer()
                break;
             default:enqueue(q,c); break;
         }
+        printStack(*s);
     }while(c!='#');
     while(!queueempty(q))
         cout<<dequeue(q)<<" ";
